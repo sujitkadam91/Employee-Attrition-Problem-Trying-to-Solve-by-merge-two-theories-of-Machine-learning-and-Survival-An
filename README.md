@@ -4,7 +4,7 @@ Employee Attrition Problem Trying to Solve by merging of two theories of Machine
 
 
 
-
+#### breakDown package contains HR_data so install beakDown package
 library(breakDown)
 str(HR_data)
 names(HR_data)
