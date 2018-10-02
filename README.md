@@ -6,25 +6,39 @@ Employee Attrition Problem Trying to Solve by merging of two theories of Machine
 
 #### breakDown package contains HR_data so install beakDown package
 library(breakDown)
+
 str(HR_data)
+
 names(HR_data)
+
 HR_data<-HR_data[,-c(9)]
+
 HR_data$Work_accident<-as.factor(HR_data$Work_accident)
+
 HR_data$left<-as.numeric(HR_data$left)
+
 HR_data$promotion_last_5years<-as.factor(HR_data$promotion_last_5years)
+
 str(HR_data)
 
 smp_size <- floor(0.5 * nrow(HR_data))
+
 set.seed(123)
+
 train_ind <- sample(seq_len(nrow(HR_data)), size = smp_size)
 
 train <- HR_data[train_ind, ]
+
 nrow(train)
+
 test <- HR_data[-train_ind, ]
+
 nrow(test)
 
 ##Cox Proportional Hazards Model
+
 names(HR_data)
+
 library(rms)
 
 cph_model <- cph(Surv(time_spend_company, left)~., data = train, surv = TRUE, x = TRUE, y=TRUE)
